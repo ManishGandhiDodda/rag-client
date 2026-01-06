@@ -88,8 +88,7 @@ export const apiClient = {
     const response = await fetch(url, {
       method: "PUT",
       body: file,
-      headers: { "Content-Type": file.type
-       },
+      headers: { "Content-Type": file.type },
     });
     if (!response.ok) {
       throw new Error(`S3 Upload Error: ${response.status}`);
