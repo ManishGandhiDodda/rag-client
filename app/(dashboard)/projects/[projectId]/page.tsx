@@ -10,6 +10,7 @@ import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { NotFound } from "@/components/ui/NotFound";
 import toast from "react-hot-toast";
 import { Project, Chat, ProjectDocument, ProjectSettings } from "@/lib/types";
+import { useRouter } from "next/navigation"; 
 
 interface ProjectPageProps {
   params: Promise<{
@@ -27,6 +28,7 @@ interface ProjectData {
 function ProjectPage({ params }: ProjectPageProps) {
   const { projectId } = use(params);
   const { getToken, userId } = useAuth();
+  const router  = useRouter();
 
   // Data state
   const [data, setData] = useState<ProjectData>({
@@ -143,6 +145,8 @@ function ProjectPage({ params }: ProjectPageProps) {
 
       const savedChat = result.data;
 
+      router.push(`/projects/${projectId}/chats/${savedChat.id}`);
+
       // Update local state
       setData((prev) => ({
         ...prev,
@@ -178,7 +182,7 @@ function ProjectPage({ params }: ProjectPageProps) {
   };
 
   const handleChatClick = (chatId: string) => {
-    console.log("Navigate to chat:", chatId);
+    router.push(`/projects/${projectId}/chats/${chatId}`);
   };
 
   // Document-related methods
