@@ -257,7 +257,7 @@ export function KnowledgeBaseSidebar({
         [".docx"],
       "application/vnd.openxmlformats-officedocument.presentationml.presentation":
         [".pptx"],
-      "text/plain": [".txt"],
+      "text/plain": [".txt",".py"],
       "text/markdown": [".md"],
     },
     maxSize: 50 * 1024 * 1024,
